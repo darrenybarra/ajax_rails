@@ -11,7 +11,8 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
- *=require jasny-bootstrap.min
+ *= require jasny-bootstrap.min
+ *= require jquery-ui
  *= require_self
  */
 
@@ -74,4 +75,19 @@ body {
     font-size: 12px;
     line-height: 1.428571429;
     border-radius: 15px;
+}
+
+.panel-footer.message {
+    border-top: 0;
+}
+
+.alert-warning {
+    margin-bottom: 0;
+}
+
+.ui-autocomplete {
+    position: relative;
+    cursor: default;
+    z-index: 9999 !important;
+    width: 180px;
 }
