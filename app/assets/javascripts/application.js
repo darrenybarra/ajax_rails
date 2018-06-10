@@ -22,7 +22,7 @@
 //= require jquery-ui/widgets/menu
 //= require_tree .
 
-$(function() {
+$(document).on('turbolinks:load', function() {
     $('#term').autocomplete({
         source: '/contacts/autocomplete',
         minLength: 3,
