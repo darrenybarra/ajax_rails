@@ -1,16 +1,6 @@
 <%= form_for( @contact, html: { multipart: true } ) do |f| %>
   <div class="panel-body">
 
-    <% if @contact.errors.any? %>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="alert alert-danger">
-            <h3>Please fill in the form correctly!</h3>
-          </div>
-        </div>
-      </div>
-    <% end %>
-
     <div class="form-horizontal">
       <div class="row">
         <div class="col-md-8">
