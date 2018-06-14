@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # delete "contacts/:id/destroy", to: "contacts#destroy", as: "destroy_contact"
   resources :contacts, except: [:show] do
       get 'autocomplete', on: :collection
+      get 'delete', on: :member
   end
 
   post '/groups', to: "groups#create"

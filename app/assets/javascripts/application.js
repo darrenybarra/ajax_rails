@@ -36,7 +36,7 @@ $(document).on('turbolinks:load', function() {
     });
 
     $('#form-modal-save-btn').click(function() {
-        $('#new_contact').submit();
+        $('#form-modal-body').find('form').submit();
     });
 });
 

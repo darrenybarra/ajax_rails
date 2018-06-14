@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_contact, only: [:edit, :update, :destroy]
+  before_action :find_contact, only: [:edit, :update, :destroy, :delete]
   # before_action :all_contacts, only: [:index, :create]
   
 
@@ -47,21 +47,44 @@ class ContactsController < ApplicationController
 
   def update
     authorize @contact
-    if @contact.update(contact_params)
-      flash[:success] = "Contact was successfully updated."
-      redirect_to contacts_path(previous_query_string)
-    else
-      flash[:error] = "Contact failed to be updated."
-      render 'edit'
+    respond_to do |format| 
+      if @contact.update(contact_params)
+        format.html do
+          flash[:success] = "Contact was successfully updated."
+          redirect_to contacts_path(previous_query_string)
+        end
+
+        format.js { render 'update', status: :ok }
+      else
+        format.html do
+          flash[:error] = "Contact failed to be updated."
+          render 'edit'
+        end
+
+        format.js { render 'edit', status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
     authorize @contact
     @contact.destroy
+
+    respond_to do |format|
+      format.html do
+        flash[:success] = "Contact was successfully deleted."
+        redirect_to contacts_path
+      end
+
+      format.js { @contacts = all_contacts(previous_query_string) }
+    end
     flash[:success] = "Contact was successfully deleted."
     redirect_to contacts_path
   end
+
+  def delete 
+  end
+  
 
   private
 
