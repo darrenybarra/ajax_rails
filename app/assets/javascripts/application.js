@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require bootstrap/dropdown
+//= require bootstrap/modal
+//= require bootstrap/transition
 //= require jasny-bootstrap.min
 //= require jquery_ujs
 //= require turbolinks
@@ -31,6 +33,10 @@ $(document).on('turbolinks:load', function() {
             $('#term').val(ui.item.value);
             $(this).closest('form').submit();
         }
+    });
+
+    $('#form-modal-save-btn').click(function() {
+        $('#new_contact').submit();
     });
 });
 
