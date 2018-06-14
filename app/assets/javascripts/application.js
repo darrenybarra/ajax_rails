@@ -16,6 +16,7 @@
 //= require bootstrap/transition
 //= require jasny-bootstrap.min
 //= require jquery_ujs
+//= require jquery.remotipart
 //= require turbolinks
 //= require jquery-ui/core
 //= require jquery-ui/widget
